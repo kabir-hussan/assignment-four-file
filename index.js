@@ -20,14 +20,10 @@ function calculateMoney(ticketSale){
         return remainingMoney;
     }
 
-    else{
-
-        return "You Should Provide Positive Number"; // It shows for negative number
-
-        
-    }
+    return "You Should Provide Positive Number"; // It shows for negative number
 
 }
+
 
 /**
  * Problem two
@@ -50,18 +46,12 @@ function checkName(name){
             return "Good Name";
         }
     
-        else{
-            return "Bad Name";
-        } 
+        return "Bad Name";
     }
 
-    else
-    {
-        return 'invalid';
-    }
+    return 'invalid';
 }
 
-// console.log(checkName('Jhankar'));
 
 /**
  * Problem 3
@@ -85,13 +75,10 @@ function deleteInvalids(array){
         return newArray;
     }
 
-    else{
-        return 'invalid';
-    }
+    return 'invalid';
 
 }
 
-// console.log(deleteInvalids([1 , null, undefined, 18, -19, NaN, "12", [1, 2], { ob: "lala" }]));
 
 
 /**
@@ -101,7 +88,7 @@ function deleteInvalids(array){
 
 function password(obj){
 
-    if(obj.birthYear >= 1000 && obj.includes(obj.siteName))
+    if(obj.birthYear >= 1000 && 'name' in obj && 'birthYear' in obj && 'siteName' in obj )
     {
       
         const result= obj.siteName[0].toUpperCase() + obj.siteName.slice(1) +  '#' + obj.name + '@' + obj.birthYear;
@@ -109,11 +96,45 @@ function password(obj){
     }
 
 
-    else
-    {
-        return 'invalid';
-    }
+    return 'invalid';
 
 }
 
-console.log(password({ name: 'rahat' , birthYear: 2002} ));
+
+/**
+ * Problem Five
+ */
+
+function monthlySavings(arr , livingCost){
+
+    let totalEarn= 0;
+
+    if(typeof arr !== 'object' || typeof livingCost !== 'number') return "invalid input";
+
+    for(const arrItem of arr )
+    {
+
+        if(arrItem < 3000)
+        {
+
+            totalEarn+= arrItem; 
+        }
+
+        else{
+         
+            totalEarn+= (arrItem - arrItem * 0.2);
+        }
+
+    }
+
+    const savingMoney=totalEarn - livingCost ;
+    
+    if(savingMoney >= 0)
+    {
+        return savingMoney;
+    }
+
+    return 'earn more';
+
+}
+
